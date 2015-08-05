@@ -1,0 +1,294 @@
+* {
+    font-family: Lucida Sans, Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px auto;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0px;
+}
+
+header h2 {
+    font-size: 18px;
+    margin: 0px;
+    color: #888;
+    font-style: italic;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0px;
+    display: block;
+    clear: right;
+    background-color: #666;
+    padding-left: 4px;
+    height: 24px;
+}
+
+nav ul li {
+    display: inline;
+    padding: 0px 20px 5px 10px;
+    height: 24px;
+    border-right: 1px solid #ccc;
+}
+
+nav ul li a {
+    color: #EFD3D3;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+article > header h1 {
+    font-size: 20px;
+    margin-left: 14px;
+}
+
+article > header h1 a {
+    color: #993333;
+}
+
+article > header h1 img {
+    vertical-align:middle;
+}
+
+article > section header h1 {
+    font-size: 16px;
+}
+
+article p {
+    clear: both;
+}
+
+footer p {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-top: 24px;
+}
+
+
+/* My code start here */
+
+.maindiv
+{
+	background-size:100% 100%;
+	/* background-image:url("images/locket4.png"); */
+	background-color:cyan;
+	left:0%;
+	top:0%;
+	position:absolute;
+	height:100%;
+	width:100%;
+	background-repeat: no-repeat;
+	
+}
+
+#img1
+{
+	background:transparent;
+	/* background-color:yellow; */
+	position:absolute;
+	height:27%;
+	width:46%;
+	top:17%;
+	left:2%;
+}
+
+
+#img2
+{
+	background:transparent;
+	/* background-color:red; */
+	position:absolute;
+	height:27%;
+	width:46%;
+	top:17%;
+	left:52%;	
+}
+
+
+#img3
+{
+	/* background-color:red; */
+	background:transparent;
+	position:absolute;
+	height:27%;
+	width:46%;
+	top:54%;
+	left:27%;
+	
+	
+	
+}
+
+
+
+
+
+.img1hw
+{
+	
+	height:100%;
+	width:100%;
+	position:absolute;
+	left:0px;
+}
+
+.img2hw
+{
+	height:100%;
+	width:100%;
+	position:absolute;
+}
+
+.img3hw
+{
+	height:100%;
+	width:100%;
+	position:absolute;
+}
+
+.dim
+{
+	height:16%;
+	width:30%;
+	position:absolute;
+	
+}
+.newest
+{
+	background-size:100% 100%;
+	/* background-image:url("images/locket4.png"); */
+	
+	left:0%;
+	top:0%;
+	position:absolute;
+	height:100%;
+	width:100%;
+	background-repeat: no-repeat;
+	
+}
+
+#canvas
+{
+	
+	background-size:100% 100%;
+	/* background-image:url("images/frm1.png"); */
+	
+	left:0%;
+	top:0%;
+	position:absolute;
+	height:100%;
+	width:100%;
+	background-repeat: no-repeat;
+	
+}
+
+
+
+.box
+{
+	height:70%;
+	width:40%;
+	position:absolute;
+	background-color:red;
+	top:23%;
+}
+
+.imdiv
+{
+	height:40%;
+	width:30%;
+	top:30%;
+	left:50%;
+	position:absolute;
+	background-color:green;
+	
+}
+
+.frame1
+{
+	position:absolute;
+	top:5%;
+	/* background-image:url("images/frm8.jpg"); */
+	background-size:100% 100%;
+	left:2%;
+	
+}
+
+.frame2
+{
+	position:absolute;
+	top:5%;
+	background-image:url("images/frm8.jpg");
+	background-size:100% 100%;
+	left:35%;
+	
+}
+
+.frame3
+{
+	position:absolute;
+	top:5%;
+	background-image:url("images/frm8.jpg");
+	background-size:100% 100%;
+	left:68%;
+	
+}
+
+/**    **/
+
+
+.container {
+  /* margin: 40px auto; */
+  max-width: 300px;
+  background-color: white;
+  /* padding: 2em; */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.25); */
+  z-index: 1;
+  color: white;
+  text-align: center;
+  pointer-events: none;
+}
+
+
+#filtercanvas
+{
+	
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  color: white;
+  text-align: center; 
+  position:fixed;
+  width: 100%;
+  height: 70%;*/
+  pointer-events: none;
+  position:fixed;
+}
+
+
+
+
+
+

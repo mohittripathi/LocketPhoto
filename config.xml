@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/LocketPhoto" version="1.0.0" viewmodes="maximized">
+    <access origin="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" subdomains="true"></access>
+    <access origin="*" subdomains="true"></access>
+    <tizen:application id="dF6uBq4Nd2.LocketPhoto" package="dF6uBq4Nd2" required_version="2.3"/>
+      <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="icon.png"/>
+    <name>LocketPhoto</name>
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/content.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:privilege name="http://tizen.org/privilege/mediacapture"/>
+    <tizen:profile name="mobile"/>
+</widget>
+
+
+
+

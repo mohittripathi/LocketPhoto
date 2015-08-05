@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<title>Canvas Drag and Drop Test</title>
+ <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/main.js"></script>
+   
+   <script src="events.js">
+</script>
+   
+   <script>
+function writeMessage(context, message){
+context.font = "18pt Calibri";
+context.fillStyle = "black";
+context.fillText(message, 10, 25);
+}
+
+window.onload = function(){
+	var events = new Events("myCanvas");
+	var canvas = events.getCanvas();
+	var context = events.getContext();
+
+
+	canvas.addEventListener("mouseout", function(){
+		events.clear();
+		writeMessage(context, "Mouseover me!");
+		}, false);
+
+	canvas.addEventListener("mousemove", function(){
+		var mousePos = events.getMousePos();
+		events.clear();
+		if (mousePos !== null) {
+		message = "Mouse position: " + mousePos.x + "," +
+		mousePos.y;
+		writeMessage(context, message);
+		}
+		}, false);
+
+	events.listen();
+
+	writeMessage(context, "Mouseover me!");
+};
+</script>	      
+</head>
+<body>
+
+<canvas id="myCanvas" width="600" height="250" style="border:1px
+solid black;">
+</canvas>
+
+
+</body>
+</html>

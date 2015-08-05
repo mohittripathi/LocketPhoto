@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- <script src="js/main1.js"></script> -->
+    <script src="js/main.js"></script>
+
+    <script>
+        window.addEventListener('load', function(){ 
+            var box2 = document.getElementById('box2'),
+            boxleft, // left position of moving box
+            boxtop,
+            startx,
+            starty, // starting x coordinate of touch point
+            dist = 0, // distance traveled by touch point
+            touchobj = null // Touch object holder
+         
+            box2.addEventListener('touchstart', function(e){
+                touchobj = e.changedTouches[0] // reference first touch point
+                boxleft = parseInt(box2.style.left) // get left position of box
+                startx = parseInt(touchobj.clientX) // get x coord of touch point
+               e.preventDefault() // prevent default click behavior
+            }, false)
+         
+           box2.addEventListener('touchstart', function(e){
+               touchobj = e.changedTouches[0] // reference first touch point
+                boxtop = parseInt(box2.style.top) // get left position of box
+                starty = parseInt(touchobj.clientY) // get x coord of touch point
+                e.preventDefault() // prevent default click behavior
+            }, false) 
+         
+            box2.addEventListener('touchmove', function(e){
+                touchobj = e.changedTouches[0] // reference first touch point for this event
+                var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+                // move box according to starting pos plus dist
+                // with lower limit 0 and upper limit 380 so it doesn't move outside track:
+                box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+               e.preventDefault()
+           }, false)
+         
+          box2.addEventListener('touchmove', function(e){
+                touchobj = e.changedTouches[0] // reference first touch point for this event
+                var dist = parseInt(touchobj.clientY) - starty // calculate dist traveled by touch point
+                // move box according to starting pos plus dist
+                // with lower limit 0 and upper limit 380 so it doesn't move outside track:
+                box2.style.top = ( (boxtop + dist>380)? 380 : (boxtop + dist < 0)? 0 : boxtop + dist ) + 'px'
+                e.preventDefault()
+            }, false)     
+        }, false)
+    </script>
+
+    <!--  <style>
+        #box2 {
+          
+            display: block;
+            position: absolute;
+             top:150px;
+             left:150px;           
+            right: 0;
+            bottom: 0;
+            width: 166px;
+            height: 188px; 
+            background-size:100% 100%;
+        }
+    </style> -->
+
+</head>
+
+<body onload="fiximage();" style="background-color:yellow;">
+
+    <canvas id="box2" style="border:1px solid red;left:0; top:0;position:absolute;height:200px;width:133px;background-size:100% 100%;"></canvas>
+    <canvas id="filtercanvas" width="359" height="475"></canvas>
+    <canvas id="finalcanvas" width="359" height="475"></canvas>
+
+
+    <hr>
+    <div style="top:94%;position:absolute;">
+        <button id="savbtn">Save</button>
+        <button id="cpybtn">Copy</button>
+        
+        <input type="button" id="camera" value="camera">
+        <!-- <input type="button" id="camera" value="camera" onclick="mohit();"> -->
+        
+    </div>
+    <script>
+        function grayscale(img) {
+            
+            var canvas = document.getElementById("filtercanvas");
+        	var ctx = canvas.getContext('2d');
+        	ctx.drawImage(img, 0, 0, 359,475);
+        	
+         	ctx.globalAlpha = 0.4; 
+        	
+        	var img_data = ctx.getImageData(0, 0, img.width, img.height);
+        	
+        	ctx.putImageData(img_data, 0, 0);
+        } 
+        var img = new Image();
+        img.onload = function() { grayscale(this); }
+        img.src = "css/images/frm1.png";
+        
+        function save_canvas() {
+        	
+        	var can1 = document.getElementById("filtercanvas"),
+            can2 = document.getElementById("box2"),
+            can3 = document.getElementById("finalcanvas"),
+            
+            ctx = can3.getContext('2d'),
+            uri = null,
+            data = null;
+
+        	
+        	ctx.drawImage(can2, 48, 230,130,135);
+        	ctx.drawImage(can1, 0, 0);
+        	
+        	
+       // ctx.drawImage(can1, 0, 0);
+       // ctx.drawImage(can2, 48, 230,130,135);
+
+
+        uri = can3.toDataURL(),
+        data = uri.substr(uri.indexOf(',')+1);
+
+        var onerror = function(err) {
+            console.log(err.name + " : " + err.message)
+        }
+        var onsuccess = function(dir) {
+            var f = dir.createFile("frm1.png");
+            f.openStream("w", function (stream) {
+                stream.writeBase64(data);
+                stream.close();
+                tizen.content.scanFile(f.toURI());
+            }, onerror, "UTF-8");
+        }
+        
+        tizen.filesystem.resolve("images", onsuccess, onerror, "rw");
+        }
+        
+        
+        document.getElementById("savbtn").addEventListener("click", save_canvas, false);
+        document.getElementById("cpybtn").addEventListener("click", copy_image, false);
+      // document.getElementById("camera").addEventListener("click", cam_image, false);    
+    </script>
+    
+    <script>
+         window.onload = function() {
+                drawEx1();
+            }
+            
+            var image1 = null;
+            
+            function drawEx1() {
+                image1 = new Image(); 
+                path1 = sessionStorage.getItem("mohit");
+               // alert(path1);
+                image1.src =path1;
+                   // "css/images/mohit.jpeg";
+                image1.addEventListener('load', drawImage1);
+            }
+            
+            function drawImage1() {
+                var canvas1  = document.getElementById("box2");
+                var context = canvas1.getContext("2d");
+                
+                context.drawImage(image1, 0, 0,263,150);
+            }  
+    </script>
+    
+    
+    <!-- <input type="button" id="camera" value="camera" style="position:absolute;left:30%;"> --> 
+</body>
+</html>
